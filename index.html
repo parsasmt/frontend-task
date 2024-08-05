@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>Document</title>
+</head>
+<body>
+    <h1 class="middle">Data Table</h1>
+    
+    <!-- Search Filters -->
+    <div class="search-container">
+        <label for="search-first-name">Search by First Name:</label>
+        <input type="text" id="search-first-name" placeholder="First Name">
+        
+        <label for="search-last-name">Search by Last Name:</label>
+        <input type="text" id="search-last-name" placeholder="Last Name">
+        
+        <label for="search-ssn">Search by SSN:</label>
+        <input type="text" id="search-ssn" placeholder="SSN">
+        
+        <button onclick="filterTable()">Search</button>
+    </div>
+
+    <button onclick="openModal('add-modal')">Add New Item</button>
+
+    <table id="data-table">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Social Security Number</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="table-body">
+            <!-- Data rows will be inserted here by JavaScript -->
+        </tbody>
+    </table>
+
+    <!-- View Modal -->
+    <div id="view-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('view-modal')">&times;</span>
+            <h2>View Information</h2>
+            <p><strong>First Name:</strong> <span id="view-first-name"></span></p>
+            <p><strong>Last Name:</strong> <span id="view-last-name"></span></p>
+            <p><strong>Social Security Number:</strong> <span id="view-ssn"></span></p>
+        </div>
+    </div>
+
+    <!-- Edit Modal -->
+    <div id="edit-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('edit-modal')">&times;</span>
+            <h2>Edit Information</h2>
+            <form id="edit-item-form">
+                <label for="edit-first-name">First Name:</label>
+                <input type="text" id="edit-first-name" name="first_name" required>
+                
+                <label for="edit-last-name">Last Name:</label>
+                <input type="text" id="edit-last-name" name="last_name" required>
+                
+                <label for="edit-ssn">Social Security Number:</label>
+                <input type="text" id="edit-ssn" name="social_security_number" required>
+                
+                <button type="submit">Save Changes</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add Modal -->
+    <div id="add-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('add-modal')">&times;</span>
+            <h2>Add New Item</h2>
+            <form id="add-item-form">
+                <label for="first-name">First Name:</label>
+                <input type="text" id="first-name" name="first_name" required>
+                
+                <label for="last-name">Last Name:</label>
+                <input type="text" id="last-name" name="last_name" required>
+                
+                <label for="ssn">Social Security Number:</label>
+                <input type="text" id="ssn" name="social_security_number" required>
+                
+                <button type="submit">Add Item</button>
+            </form>
+            <p id="add-error" class="error-message"></p>
+        </div>
+    </div>
+    <script src="./app.js"></script>
+</body>
+</html>

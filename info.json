@@ -1,0 +1,22 @@
+[
+    {
+        "first_name": "John",
+        "last_name": "Doe",
+        "social_security_number": "123-45-6789"
+    },
+    {
+        "first_name": "Jane",
+        "last_name": "Smith",
+        "social_security_number": "987-65-4321"
+    },
+    {
+        "first_name": "Alice",
+        "last_name": "Johnson",
+        "social_security_number": "111-22-3333"
+    },
+    {
+        "first_name": "Bob",
+        "last_name": "Brown",
+        "social_security_number": "444-55-6666"
+    }
+]
