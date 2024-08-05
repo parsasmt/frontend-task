@@ -24,6 +24,7 @@
         <button onclick="filterTable()">Search</button>
     </div>
 
+    <!-- Add Item Button -->
     <button onclick="openModal('add-modal')">Add New Item</button>
 
     <table id="data-table">
@@ -91,6 +92,18 @@
             </form>
         </div>
     </div>
+
+   <!-- Chart Modal -->
+   <div id="chart-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('chart-modal')">&times;</span>
+            <h2>Edit Count Chart</h2>
+            <canvas id="edit-chart"></canvas>
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="./app.js"></script>
 </body>
 </html>
