@@ -180,3 +180,11 @@ button:hover {
 .search-container input[type="text"] {
     box-sizing: border-box;
 }
+/* Ensure inputs and button align properly */
+.search-container input[type="text"] {
+    box-sizing: border-box;
+}
+
+.search-container input[type="number"] {
+    box-sizing: border-box;
+}

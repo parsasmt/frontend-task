@@ -19,8 +19,8 @@
         <input type="text" id="search-last-name" placeholder="Last Name">
         
         <label for="search-ssn">Search by SSN:</label>
-        <input type="text" id="search-ssn" placeholder="SSN">
-        
+        <input type="number" id="search-ssn" placeholder="SSN" max="9999999999">
+    
         <button onclick="filterTable()">Search</button>
     </div>
 
@@ -84,11 +84,11 @@
                 <input type="text" id="last-name" name="last_name" required>
                 
                 <label for="ssn">Social Security Number:</label>
-                <input type="text" id="ssn" name="social_security_number" required>
+                <input type="number" id="ssn" name="social_security_number" required max="9999999999">
                 
                 <button type="submit">Add Item</button>
+                <p id="add-error" class="error-message"></p>
             </form>
-            <p id="add-error" class="error-message"></p>
         </div>
     </div>
     <script src="./app.js"></script>
