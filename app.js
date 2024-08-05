@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', () => {
     const editCounts = {}; // To track the number of edits per row
 
@@ -12,13 +13,13 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .catch(error => console.error('Error loading data:', error));
 
-    // Add new item to the table
-    const addItemForm = document.getElementById('add-item-form');
-    addItemForm.addEventListener('submit', event => {
-        event.preventDefault();
-        const firstName = event.target.first_name.value.trim();
-        const lastName = event.target.last_name.value.trim();
-        const ssn = event.target.social_security_number.value.trim();
+        // Add new item to the table
+        const addItemForm = document.getElementById('add-item-form');
+        addItemForm.addEventListener('submit', event => {
+            event.preventDefault();
+            const firstName = event.target.first_name.value.trim();
+            const lastName = event.target.last_name.value.trim();
+            const ssn = event.target.social_security_number.value.trim();
 
         // Validate input fields
         if (!firstName || !lastName || !ssn) {
@@ -26,10 +27,10 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        if (ssn.length > 10) {
-            document.getElementById('add-error').textContent = 'SSN must be a maximum of 10 digits.';
-            return;
-        }
+            if (ssn.length > 10) {
+                document.getElementById('add-error').textContent = 'SSN must be a maximum of 10 digits.';
+                return;
+            }
 
         // Clear error message
         document.getElementById('add-error').textContent = '';
@@ -44,16 +45,16 @@ document.addEventListener('DOMContentLoaded', () => {
         closeModal('add-modal');
     });
 
-    // Save edited item
-    const editItemForm = document.getElementById('edit-item-form');
-    editItemForm.addEventListener('submit', event => {
-        event.preventDefault();
-        const rowId = document.getElementById('edit-modal').dataset.row;
-        const row = document.querySelector(`#${rowId}`);
-        const cells = row.getElementsByTagName('td');
-        const firstName = event.target.first_name.value.trim();
-        const lastName = event.target.last_name.value.trim();
-        const ssn = event.target.social_security_number.value.trim();
+        // Save edited item
+        const editItemForm = document.getElementById('edit-item-form');
+        editItemForm.addEventListener('submit', event => {
+            event.preventDefault();
+            const rowId = document.getElementById('edit-modal').dataset.row;
+            const row = document.querySelector(`#${rowId}`);
+            const cells = row.getElementsByTagName('td');
+            const firstName = event.target.first_name.value.trim();
+            const lastName = event.target.last_name.value.trim();
+            const ssn = event.target.social_security_number.value.trim();
 
         // Validate input fields
         if (!firstName || !lastName || !ssn) {
@@ -61,10 +62,10 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        if (ssn.length > 10) {
-            alert('SSN must be a maximum of 10 digits.');
-            return;
-        }
+            if (ssn.length > 10) {
+                alert('SSN must be a maximum of 10 digits.');
+                return;
+            }
 
         cells[0].textContent = firstName;
         cells[1].textContent = lastName;
@@ -84,17 +85,17 @@ document.addEventListener('DOMContentLoaded', () => {
         const row = document.createElement('tr');
         row.id = `row-${new Date().getTime()}`;
 
-        const firstNameCell = document.createElement('td');
-        firstNameCell.textContent = item.first_name;
-        row.appendChild(firstNameCell);
+            const firstNameCell = document.createElement('td');
+            firstNameCell.textContent = item.first_name;
+            row.appendChild(firstNameCell);
 
-        const lastNameCell = document.createElement('td');
-        lastNameCell.textContent = item.last_name;
-        row.appendChild(lastNameCell);
+            const lastNameCell = document.createElement('td');
+            lastNameCell.textContent = item.last_name;
+            row.appendChild(lastNameCell);
 
-        const ssnCell = document.createElement('td');
-        ssnCell.textContent = item.social_security_number;
-        row.appendChild(ssnCell);
+            const ssnCell = document.createElement('td');
+            ssnCell.textContent = item.social_security_number;
+            row.appendChild(ssnCell);
 
         const actionsCell = document.createElement('td');
         actionsCell.innerHTML = `
@@ -102,6 +103,8 @@ document.addEventListener('DOMContentLoaded', () => {
             <i class="fas fa-edit" onclick="editRow(this)"></i>
             <i class="fas fa-trash" onclick="deleteRow(this)"></i>
             <i class="fas fa-chart-bar" onclick="showEditChart(this)"></i>
+            <i class="fas fa-map-marker-alt" onclick="showOnMap(${item.latitude}, ${item.longitude})"></i>
+
         `;
         row.appendChild(actionsCell);
 
@@ -176,29 +179,36 @@ window.showEditChart = function (icon) {
     openModal('chart-modal');
 }
 
-    // Open modal
-    window.openModal = function (modalId) {
-        document.getElementById(modalId).style.display = 'block';
-    }
+  // Show location on map
+  window.showOnMap = function (latitude, longitude) {
+    const mapIframe = document.getElementById('map-iframe');
+    mapIframe.src = `https://www.google.com/maps?q=${latitude},${longitude}&output=embed`;
+    openModal('map-modal');
+}
 
-    // Close modal
-    window.closeModal = function (modalId) {
-        document.getElementById(modalId).style.display = 'none';
-    }
+        // Open modal
+        window.openModal = function (modalId) {
+            document.getElementById(modalId).style.display = 'block';
+        }
 
-    // Filter table rows based on search inputs
-    window.filterTable = function() {
-        const firstNameFilter = document.getElementById('search-first-name').value.toLowerCase();
-        const lastNameFilter = document.getElementById('search-last-name').value.toLowerCase();
-        const ssnFilter = document.getElementById('search-ssn').value.toLowerCase();
-        const tableBody = document.getElementById('table-body');
-        const rows = tableBody.getElementsByTagName('tr');
+        // Close modal
+        window.closeModal = function (modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
 
-        Array.from(rows).forEach(row => {
-            const cells = row.getElementsByTagName('td');
-            const firstName = cells[0].textContent.toLowerCase();
-            const lastName = cells[1].textContent.toLowerCase();
-            const ssn = cells[2].textContent.toLowerCase();
+        // Filter table rows based on search inputs
+        window.filterTable = function() {
+            const firstNameFilter = document.getElementById('search-first-name').value.toLowerCase();
+            const lastNameFilter = document.getElementById('search-last-name').value.toLowerCase();
+            const ssnFilter = document.getElementById('search-ssn').value.toLowerCase();
+            const tableBody = document.getElementById('table-body');
+            const rows = tableBody.getElementsByTagName('tr');
+
+            Array.from(rows).forEach(row => {
+                const cells = row.getElementsByTagName('td');
+                const firstName = cells[0].textContent.toLowerCase();
+                const lastName = cells[1].textContent.toLowerCase();
+                const ssn = cells[2].textContent.toLowerCase();
 
             const match = (firstName.includes(firstNameFilter) || firstNameFilter === '') &&
                           (lastName.includes(lastNameFilter) || lastNameFilter === '') &&
@@ -208,3 +218,4 @@ window.showEditChart = function (icon) {
         });
     }
 });
+

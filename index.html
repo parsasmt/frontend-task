@@ -24,18 +24,20 @@
         <button onclick="filterTable()">Search</button>
     </div>
 
-    <!-- Add Item Button -->
     <button onclick="openModal('add-modal')">Add New Item</button>
 
-    <table id="data-table">
+    <!-- Table -->
+    <table>
         <thead>
             <tr>
                 <th>First Name</th>
                 <th>Last Name</th>
-                <th>Social Security Number</th>
+                <th>SSN</th>
                 <th>Actions</th>
             </tr>
         </thead>
+        <tbody id="table-body"></tbody>
+    </table>
         <tbody id="table-body">
             <!-- Data rows will be inserted here by JavaScript -->
         </tbody>
@@ -102,8 +104,17 @@
         </div>
     </div>
 
+      <!-- Map Modal -->
+      <div id="map-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('map-modal')">&times;</span>
+            <h2>Location on Map</h2>
+            <iframe id="map-iframe" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+        </div>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="./app.js"></script>
 </body>
 </html>
+

@@ -2,21 +2,33 @@
     {
         "first_name": "John",
         "last_name": "Doe",
-        "social_security_number": "1234567899"
+        "social_security_number": "1234567899",
+        "logins":2,
+        "latitude": 41.40338,
+        "longitude": 2.17403
     },
     {
         "first_name": "Jane",
         "last_name": "Smith",
-        "social_security_number": "9876543213"
+        "social_security_number": "9875654321",
+        "logins":8,
+        "latitude": 34.0522,
+        "longitude": -118.2437
     },
     {
         "first_name": "Alice",
         "last_name": "Johnson",
-        "social_security_number": "1112233334"
+        "social_security_number": "5555123456",
+        "logins":6,
+        "latitude": 40.7128,
+        "longitude": -74.0060
     },
     {
         "first_name": "Bob",
-        "last_name": "Brown",
-        "social_security_number": "4445566662"
+        "last_name": "Williams",
+        "social_security_number": "2223334444",
+        "logins":3,
+        "latitude": 41.8781,
+        "longitude": -87.6298
     }
 ]
